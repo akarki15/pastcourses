@@ -1,0 +1,31 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class TheGame {
+
+	int howManyPushed = 0;
+    int limit;
+    Lab8Frame frame;
+    DisplayPanel panel;
+    public TheGame(int i, Lab8Frame frame2, DisplayPanel p) {
+		limit = i;
+		frame = frame2;
+		panel=p;
+	}
+
+	public void badSpot() {
+		frame.setDoneMessage("You Lose - Good!");
+	}
+	
+	public void spot() {
+		howManyPushed++;
+		frame.add(new JLabel(""+howManyPushed));
+		if (howManyPushed == limit)
+			frame.setDoneMessage("Curses, you win");
+	}
+    public void everyTime(){
+	panel.add(new JLabel("Hey!"));
+    }
+
+
+}

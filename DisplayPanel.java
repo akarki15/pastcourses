@@ -1,0 +1,61 @@
+import java.awt.*;
+
+import javax.swing.JPanel;
+
+
+
+public class DisplayPanel extends JPanel  {
+	
+    private int size = 7;
+    private Color col;
+    private Color col2 = makeRandomColor();
+
+	public DisplayPanel() {
+		super();
+		// set size, otherwise Java will assume 0 x 0 and component may disappear
+		setPreferredSize(new Dimension(300,300));
+	
+	}
+
+
+	public void randomSet() {
+	    
+	    col = makeRandomColor();
+	    
+	}
+
+	public void paintComponent(Graphics g) {
+
+		super.paintComponent(g);
+
+		// save old color
+		Color colOld = g.getColor();
+		g.draw3DRect(10,10,20,22,true);
+		g.fill3DRect(10,10,20,22,true);
+		g.drawLine(30,55,45,60);
+
+		g.setColor(col);
+		
+		g.setFont(new Font("serif",Font.BOLD,18));
+		g.drawString("Your First GUI Program",50,50);
+		
+		g.setColor(col2);
+
+		g.fillOval(160,130,60,20);
+		g.drawLine(160,160,100,100);
+		// restore old color
+		g.setColor(colOld);
+	}
+
+
+	private Color makeRandomColor() {
+		int red = (int) (Math.random()*255);
+		int green = (int) (Math.random()*255);
+		int blue = (int) (Math.random()*255);
+
+		Color col = new Color(red,green,blue);
+		return col;
+	}
+
+   
+}
